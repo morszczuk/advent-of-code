@@ -16,6 +16,8 @@ Solutions are written in Ruby. Star - solution has been found, snowflake - not y
 | --- | :---: | :---: |
 | Day 1 - The Tyranny of the Rocket Equation | :star:  | :star: |
 | Day 2 - 1202 Program Alarm | :star:  | :star: |
+| Day 3 - Crossed Wires | :star:  | :star: |
+| Day 4 - Secure Container | :star:  | :star: |
 
 
 ## 2018
