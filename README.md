@@ -18,6 +18,27 @@ Solutions are written in Ruby. Star - solution has been found, snowflake - not y
 | Day 2 - 1202 Program Alarm | :star:  | :star: |
 | Day 3 - Crossed Wires | :star:  | :star: |
 | Day 4 - Secure Container | :star:  | :star: |
+| Day 5 - Sunny with a Chance of Asteroids | :star:  | :star: |
+| Day 6 - Universal Orbit Map | :star:  | :star: |
+| Day 7 - Amplification Circuit | :star:  | :star: |
+| Day 8 - Space Image Format | :star:  | :star: |
+| Day 9 - Sensor Boost | :star:  | :star: |
+| Day 10 - Monitoring Station | :snowflake: | :snowflake: |
+| Day 11 - Space Police | :snowflake: | :snowflake: |
+| Day 12 - The N-Body Proble | :snowflake: | :snowflake: |
+| Day 13 - Care Package | :snowflake: | :snowflake: |
+| Day 14 - Space Stoichiometry | :snowflake: | :snowflake: |
+| Day 15 - Oxygen System | :snowflake: | :snowflake: |
+| Day 16 - Flawed Frequency Transmission | :snowflake: | :snowflake: |
+| Day 17 - Set and Forget  | :snowflake: | :snowflake: |
+| Day 18 - Many-Worlds Interpretation | :snowflake: | :snowflake: |
+| Day 19 - Tractor Beam  | :snowflake: | :snowflake: |
+| Day 20 - Donut Maze | :star:  | :snowflake: |
+| Day 21 - Springdroid Adventure | :snowflake: | :snowflake: |
+| Day 22 - Slam Shuffle | :star:  | :snowflake: |
+| Day 23 - Category Six  | :snowflake: | :snowflake:|
+| Day 24 - Planet of Discord | :star:  | :star: |
+| Day 25 -  |  |  |
 
 
 ## 2018

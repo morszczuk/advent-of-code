@@ -71,12 +71,12 @@ class Quiz451B < Quiz451A
   end
 end
 
-Test.new(TEST_DATA).test_data do |number|
-  Quiz451A.new.potential_password? number.digits.reverse
+Test.new(TEST_DATA).test_data do |input|
+  Quiz451A.new.solve input
 end
 
-# Test.new(TEST_DATA_2).test_data do |number|
-#   Quiz451B.new.potential_password? number.digits.reverse
+# Test.new(TEST_DATA_2).test_data do |input|
+  # Quiz451B.new.solve input
 # end
 
 pp Quiz451A.new('input.txt').solve
