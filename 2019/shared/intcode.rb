@@ -90,7 +90,8 @@ class Intcode
   def initialize(code: nil, input: [], filename: nil)
     machine_code = filename ? File.open(filename, &:gets) : code
     @tape_operator = TapeOperator.new(machine_code)
-    @input = input
+    @input = []
+    add_input(input)
     @output = []
   end
 
@@ -99,7 +100,7 @@ class Intcode
       @action_result = perform_action
       break if [:halt, :input_empty].include? @action_result
     end
-    OpenStruct.new(code: @action_result, output: @output)
+    OpenStruct.new(code: @action_result, output: output)
   end
 
   def perform_action
@@ -109,7 +110,9 @@ class Intcode
     when 2
       @tape_operator.write_operation_result(:*)
     when 3
-      @tape_operator.write(arg_id: 1, value: @input.first)
+      return :input_empty if @input.empty?
+
+      @tape_operator.write(arg_id: 1, value: @input.shift)
       @tape_operator.move(steps: 2)
     when 4
       @output << @tape_operator.arg_1
@@ -127,5 +130,66 @@ class Intcode
     when 99
       :halt
     end
+  end
+
+  def add_input(input)
+    @input += input
+  end
+
+  def output
+    @output
+  end
+end
+
+class ASCIIConverter
+  def self.to_ascii(str)
+    "#{str}\n".codepoints.to_a.flatten
+  end
+
+  def self.from_ascii(ascii_codes)
+    ascii_codes.map do |code|
+      begin
+        code.chr
+      rescue RangeError
+        code
+      end
+    end.join('')
+  end
+end
+
+module ASCIICoding
+  def add_input(input)
+    # byebug
+    super(input.map {|input_entry| ASCIIConverter.to_ascii(input_entry) }.flatten)
+  end
+
+  def output
+    ASCIIConverter.from_ascii(@output).split("\n")
+  end
+end
+
+class ASCIIIntcode < Intcode
+  include ASCIICoding
+end
+
+class InteractiveACIIIntcode < Intcode
+  include ASCIICoding
+
+  def run
+    @commands = []
+    last_result = super
+    until last_result[:code] == :halt
+      pp last_result[:output]
+      add_input([read_from_console])
+      last_result = super
+    end
+    pp @commands
+    last_result
+  end
+
+  def read_from_console
+    input = gets.chomp
+    @commands << input
+    input
   end
 end

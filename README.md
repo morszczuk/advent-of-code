@@ -38,7 +38,7 @@ Solutions are written in Ruby. Star - solution has been found, snowflake - not y
 | Day 22 - Slam Shuffle | :star:  | :snowflake: |
 | Day 23 - Category Six  | :snowflake: | :snowflake:|
 | Day 24 - Planet of Discord | :star:  | :star: |
-| Day 25 -  |  |  |
+| Day 25 - Cryostasis | :star: | :snowflake: |
 
 
 ## 2018
