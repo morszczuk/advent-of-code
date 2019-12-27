@@ -26,17 +26,17 @@ Solutions are written in Ruby. Star - solution has been found, snowflake - not y
 | Day 10 - Monitoring Station | :snowflake: | :snowflake: |
 | Day 11 - Space Police | :snowflake: | :snowflake: |
 | Day 12 - The N-Body Proble | :snowflake: | :snowflake: |
-| Day 13 - Care Package | :snowflake: | :snowflake: |
+| Day 13 - Care Package | :star: | :snowflake: |
 | Day 14 - Space Stoichiometry | :snowflake: | :snowflake: |
 | Day 15 - Oxygen System | :snowflake: | :snowflake: |
 | Day 16 - Flawed Frequency Transmission | :snowflake: | :snowflake: |
-| Day 17 - Set and Forget  | :snowflake: | :snowflake: |
+| Day 17 - Set and Forget  | :star: | :star: |
 | Day 18 - Many-Worlds Interpretation | :snowflake: | :snowflake: |
-| Day 19 - Tractor Beam  | :snowflake: | :snowflake: |
+| Day 19 - Tractor Beam  | :star: | :snowflake: |
 | Day 20 - Donut Maze | :star:  | :snowflake: |
-| Day 21 - Springdroid Adventure | :snowflake: | :snowflake: |
+| Day 21 - Springdroid Adventure | :star: | :star: |
 | Day 22 - Slam Shuffle | :star:  | :snowflake: |
-| Day 23 - Category Six  | :snowflake: | :snowflake:|
+| Day 23 - Category Six  | :star: | :star: |
 | Day 24 - Planet of Discord | :star:  | :star: |
 | Day 25 - Cryostasis | :star: | :snowflake: |
 
