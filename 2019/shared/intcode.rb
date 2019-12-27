@@ -115,7 +115,7 @@ class Intcode
       @tape_operator.write(arg_id: 1, value: @input.shift)
       @tape_operator.move(steps: 2)
     when 4
-      @output << @tape_operator.arg_1
+      add_to_output(@tape_operator.arg_1)
       @tape_operator.move(steps: 2)
     when 5
       @tape_operator.conditional_jump { @tape_operator.arg_1 != 0 }
@@ -130,6 +130,10 @@ class Intcode
     when 99
       :halt
     end
+  end
+
+  def add_to_output(value)
+    @output << value
   end
 
   def add_input(input)
@@ -159,7 +163,6 @@ end
 
 module ASCIICoding
   def add_input(input)
-    # byebug
     super(input.map {|input_entry| ASCIIConverter.to_ascii(input_entry) }.flatten)
   end
 
@@ -172,15 +175,13 @@ class ASCIIIntcode < Intcode
   include ASCIICoding
 end
 
-class InteractiveACIIIntcode < Intcode
-  include ASCIICoding
-
+class InteractiveIntcode < Intcode
   def run
     @commands = []
     last_result = super
     until last_result[:code] == :halt
       pp last_result[:output]
-      add_input([read_from_console])
+      add_input([read_from_console].flatten)
       last_result = super
     end
     pp @commands
@@ -191,5 +192,179 @@ class InteractiveACIIIntcode < Intcode
     input = gets.chomp
     @commands << input
     input
+  end
+end
+
+class InteractiveASCIIIntcode < InteractiveIntcode
+  include ASCIICoding
+end
+
+class IntcodeWithListeners < Intcode
+  def add_listeners(*listeners)
+    @listeners = [] unless @listeners
+    @listeners += listeners
+  end
+
+
+  def add_to_output(value)
+    super(value)
+    @listeners.each(&:notify)
+  end
+end
+
+module ArcadeCoding
+  def output
+    byebug if @output.count == 3
+    return @output if @output.count == 3
+
+    prepare_results(@output)
+    # ASCIIConverter.from_ascii(@output).split("\n")
+  end
+
+  def prepare_results(output)
+    output_sliced = output.each_slice(3).to_a.group_by { |entry| [entry[0], entry[1]] }
+    max_x = output_sliced.keys.max {|lala| lala.last }.last
+    max_y = output_sliced.keys.max {|lala| lala.first }.first
+    picture = max_x.times.map do |x|
+      max_y.times.map do |y|
+        map_elem(output_sliced[[y, x]].last.last)
+      end.join('')
+    end
+    # result = picture.flatten.count('=')
+    picture.each do |row|
+      pp row
+    end
+    picture
+    # pp result
+    # pp "#{picture}"
+    # byebug
+  end
+
+  def map_elem(code)
+    # byebug
+    case code
+    when 0
+      ' '
+    when 1
+      '#'
+    when 2
+      '='
+    when 3
+      '-'
+    when 4
+      'o'
+    end
+  end
+end
+
+class InteractiveArcadeIntcode < InteractiveIntcode
+  include ArcadeCoding
+
+  def read_from_console
+    # read = super
+    # manual(read)
+
+    automat
+  end
+
+  def manual(read)
+    input = read.split('')
+    if input.empty?
+      read = 0
+    else
+      input[0] = input[0] == '2' ? -1 : input[0].to_i
+      read = input[1].nil? ? input[0] : Array.new(input[1].to_i) { input[0].to_i }
+      # if input.count == 1
+        # read = input.first.to_i
+    end
+    @read_history ||= []
+    @read_history += [read].flatten
+    read
+  end
+
+
+  def automat
+    current_status = prepare_results(@output)
+    cursor_position = current_status.last.chars.index('-')
+    ball_y_position = current_status.each_with_index.select{|row, index| row.chars.include? 'o'}.last.last
+    ball_x_position = current_status.select{|row| row.chars.include? 'o'}.first.chars.index('o')
+    ball_x_movement = @last_ball_x_position ? ball_x_position <=> @last_ball_x_position : 0
+    ball_y_movement = @last_ball_y_position ? ball_y_position <=> @last_ball_y_position : 0
+
+    destination = calculate_destination(ball_x_position, ball_y_position, ball_x_movement, ball_y_movement) if @last_ball_x_position
+
+    case ball_x_movement
+    when 1
+      if destination != cursor_position
+        distance = (cursor_position - destination).abs
+        joystick = cursor_position > destination ? -1 : 1
+        read = Array.new(distance) { joystick }
+      else
+        read = 0
+      end
+      # if cursor_position > ball_x_position
+    when -1
+      if destination != cursor_position
+        distance = (cursor_position - destination).abs
+        joystick = cursor_position > destination ? -1 : 1
+        read = Array.new(distance) { joystick }
+      else
+        read = 0
+      end
+    when 0
+      read = 0
+    else
+      read = 0
+    end
+    byebug
+    @last_ball_y_position = ball_y_position
+    @last_ball_x_position = ball_x_position
+    @last_cursor_position = cursor_position
+
+    # read = ball_x_position - cursor_position == ball_x_movement ? 0 : ball_x_movement
+
+
+    # read = super
+    # input = read.split('')
+    # if input.empty?
+    #   read = 0
+    # else
+    #   input[0] = input[0] == '2' ? -1 : input[0].to_i
+    #   read = input[1].nil? ? input[0] : Array.new(input[1].to_i) { input[0].to_i }
+    #   # if input.count == 1
+    #     # read = input.first.to_i
+    # end
+    
+    @read_history ||= []
+    @read_history += [read].flatten
+    read
+  end
+
+  def calculate_destination(ball_x_position, ball_y_position, ball_x_movement, ball_y_movement)
+    case ball_y_movement
+    when 1
+      base = 21 - ball_y_position
+    when -1
+      base = 21 - ball_y_position + ((ball_y_position)*2)
+    end
+
+    base =  ball_x_movement == 1 ? base + ball_x_position : base - ball_x_position
+
+    if base > 42
+      x_temp = base - 42
+      42 - x_temp
+    elsif base < 0
+      base.abs
+    else
+      base
+    end
+  end
+
+  def run
+    res = super
+    pp 'Read History: '
+    pp @read_history
+    pp "cursor position: #{@last_cursor_position} last ball x position: #{@last_ball_x_position}"
+    res
   end
 end
