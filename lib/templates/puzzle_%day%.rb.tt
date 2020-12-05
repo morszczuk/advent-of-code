@@ -1,0 +1,11 @@
+module Aoc<%= year %>
+  module Day<%= day %>
+    class Puzzle<%= day %> < ::Aoc::PuzzleBase
+      def initialize
+      end
+
+      def solve
+      end
+    end
+  end
+end

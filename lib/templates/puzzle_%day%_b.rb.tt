@@ -1,0 +1,9 @@
+module Aoc<%= year %>
+  module Day<%= day %>
+    class Puzzle<%= day %>B < Puzzle<%= day %>
+      def solve
+      end
+    end
+  end
+end
+
