@@ -1,6 +1,6 @@
-module Aoc<%= year %>
-  module Day<%= day %>
-    class Puzzle<%= day %> < ::Aoc::PuzzleBase
+module Aoc2020
+  module Day3
+    class Puzzle3 < ::Aoc::PuzzleBase
       def initialize
       end
 
