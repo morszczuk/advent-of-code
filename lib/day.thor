@@ -31,10 +31,10 @@ class Day < Thor
     end
 
     def target_directory
-      test_path = "../test/"
+      solutions_path = "../solutions/"
       day_path = "aoc_#{year}/day_#{day}/"
 
-      test_path + day_path
+      solutions_path + day_path
     end
   end
 

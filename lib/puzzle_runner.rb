@@ -5,7 +5,7 @@ module AOC
   require 'zeitwerk'
   loader = Zeitwerk::Loader.new
   loader.push_dir(File.dirname(__FILE__) + '/../lib/utils')
-  loader.push_dir(File.dirname(__FILE__) + '/../test')
+  loader.push_dir(File.dirname(__FILE__) + '/../solutions')
   loader.setup
 
   class PuzzleRunner
@@ -57,7 +57,7 @@ module AOC
     end
 
     def inputs_directory
-      "#{File.dirname(__FILE__)}/../test/aoc_#{@year}/day_#{@day}/inputs/"
+      "#{File.dirname(__FILE__)}/../solutions/aoc_#{@year}/day_#{@day}/inputs/"
     end
   end
 end
