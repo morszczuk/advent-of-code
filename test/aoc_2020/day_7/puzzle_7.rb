@@ -12,9 +12,7 @@ module Aoc2020
       end
 
       def recursive_child_count(node, weight)
-        # byebug
         child_sum = @graph.children(node)&.map do |child_node, child_weight|
-          # byebug
           recursive_child_count(child_node, child_weight*weight)
         end&.sum
 
@@ -103,6 +101,7 @@ module Aoc2020
       def initialize
         @rules = {}
         @graph = ColorGraph.new
+        super()
       end
 
       def solve
