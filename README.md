@@ -10,6 +10,40 @@ Santa's having some troubles, which are well documented on the [advent of code](
 
 Solutions are written in Ruby. Star - solution has been found, snowflake - not yet!
 
+## 2020 - puzzle runner (experimental!)
+
+The process of creating and running the solution is very similar, every day. Thus, I created small scripts, to speed it up!
+
+Download and setup the new quiz day:
+
+```sh
+cd lib
+thor day:setup <day_number> # e.g. thor puzzle:solve 7
+```
+
+It will create project structure + download the input.
+
+Then, these commands are available:
+
+```sh
+thor puzzle:solve <day_number> -i # Calculates solution for main input - input.txt, for both parts A and B
+thor puzzle:solve <day_number> -i -p a # Calculates solution for main input - input.txt, for the part A
+thor puzzle:solve <day_number> -t -p b # Calculates solution for test input - test.txt, for the part B
+thor puzzle:solve <day_number> -u # Runs test cases from the method unit_tets
+```
+
+## 2020
+
+|  | Part One | Part Two |
+| --- | :---: | :---: |
+| Day 1 | :star:  | :star: |
+| Day 2 | :star:  | :star: |
+| Day 3 | :star:  | :star: |
+| Day 4 | :star:  | :star: |
+| Day 5 | :star:  | :star: |
+| Day 6 | :star:  | :star: |
+| Day 7 | :star:  | :star: |
+
 ## 2019
 
 |  | Part One | Part Two |
