@@ -8,7 +8,7 @@ class Puzzle < Thor
   desc 'solve day_number', 'Run puzzle'
   method_option :input, aliases: '-i', default: false, type: :boolean
   method_option :input_test, aliases: '-t', default: false, type: :boolean
-  method_option :input_test_case, aliases: '-input-case'
+  method_option :input_test_case, aliases: '-c'
   method_option :unit, aliases: '-u', default: false, type: :boolean
   method_option :parts, aliases: '-p', default: 'ab'
   method_option :year, aliases: '-y', default: CURRENT_YEAR
