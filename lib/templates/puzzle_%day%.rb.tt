@@ -8,7 +8,7 @@ module Aoc<%= year %>
         raise 'Not defined'
       end
 
-      def handle_input_line(line)
+      def handle_input_line(line, *_args)
       end
 
       def unit_tests

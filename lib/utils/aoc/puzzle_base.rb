@@ -12,19 +12,18 @@ module Aoc
   end
 
   class PuzzleBase
-    # @@assertions
-    # self.assertions = 0
-    # include Minitest::Assertions
-    # include Assertions
-
     def self.call(input_filename:)
       puzzle = new
-      puzzle.parse_input(input_filename) { |line| puzzle.handle_input_line(line) }
+      puzzle.parse_input(input_filename) { |line, index| puzzle.handle_input_line(line, index) }
       puzzle.solve
     end
 
     def parse_input(input_filename)
-      File.readlines(input_filename).each { |line| yield(line.strip!) }
+      File.readlines(input_filename).each_with_index { |line, index| yield(line.strip!, index) }
+    end
+
+    def handle_input_line(line, _index)
+      handle_input_line(line)
     end
 
     def assert_equal(arg_1, arg_2)

@@ -25,10 +25,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport (= 6.0.3.4)
   byebug
   net
   thor
   uri
+  zeitwerk
 
 BUNDLED WITH
    2.1.4
