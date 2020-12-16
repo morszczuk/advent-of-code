@@ -1,7 +1,7 @@
 module Aoc2020
   module Day12
     class MovingObject
-      attr_reader :position, :angle
+      attr_accessor :position, :angle
 
       def initialize(starting_position = [0, 0])
         @starting_position = starting_position
