@@ -54,7 +54,7 @@ thor puzzle:solve <day_number> -u # Runs test cases from the method unit_tets
 | Day 16 | :star: | :star: |
 | Day 17 | :star: | :star: |
 | Day 18 | :star: | :star: |
-| Day 19 | :snowflake: | :snowflake: |
+| Day 19 | :star: | :star: |
 | Day 20 | :snowflake: | :snowflake: |
 | Day 21 | :star: | :star: |
 | Day 22 | :star: | :star: |
