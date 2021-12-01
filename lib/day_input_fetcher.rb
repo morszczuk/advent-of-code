@@ -2,7 +2,7 @@ require 'uri'
 require 'net/http'
 
 class DayInputFetcher
-  SESSION_COOKIE = 'session=53616c7465645f5f214b5673f8e676d40556765dc5a6006f07e2a06731ef9d481c6e9d07ada1a7a12e111c367e612da9'.freeze
+  SESSION_COOKIE = 'session=53616c7465645f5fb09ea1826dd15a5e710c6609536b2ba1c92bad5c821552c22f30743b29a9ae08e63ac2dfb559bebb'.freeze
 
   def initialize(year, day)
     @uri = URI.parse("https://adventofcode.com/#{year}/day/#{day}/input")

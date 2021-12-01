@@ -1,5 +1,6 @@
-require 'active_support/core_ext'
 require 'byebug'
+require "active_support"
+require 'active_support/core_ext/string'
 
 module AOC
   require 'zeitwerk'

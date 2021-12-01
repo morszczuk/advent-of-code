@@ -3,7 +3,7 @@ require_relative './puzzle_runner'
 class Puzzle < Thor
   include Thor::Actions
 
-  CURRENT_YEAR = '2020'.freeze
+  CURRENT_YEAR = '2021'.freeze
 
   desc 'solve day_number', 'Run puzzle'
   method_option :input, aliases: '-i', default: false, type: :boolean
