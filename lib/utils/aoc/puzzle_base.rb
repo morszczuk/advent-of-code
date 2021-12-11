@@ -1,6 +1,9 @@
 require 'minitest'
+require_relative '../array_2_d'
 
 module Aoc
+  # include Aoc::Array2D
+
   module Assertions
     extend Minitest::Assertions
 
