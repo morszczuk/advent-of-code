@@ -32,7 +32,7 @@ thor puzzle:solve <day_number> -t -p b # Calculates solution for test input - te
 thor puzzle:solve <day_number> -u # Runs test cases from the method unit_tets
 ```
 
-## 2021 - 26 :star:
+## 2021 - 28 :star:
 |  | Part One | Part Two |
 | --- | :---: | :---: |
 | Day 1 | :star: | :star: |
@@ -48,7 +48,7 @@ thor puzzle:solve <day_number> -u # Runs test cases from the method unit_tets
 | Day 11 | :star: | :star: |
 | Day 12 | :star: | :star: |
 | Day 13 | :star: | :star: |
-| Day 14 | | |
+| Day 14 | :star: | :star: |
 | Day 15 | | |
 | Day 16 | | |
 | Day 17 | | |
