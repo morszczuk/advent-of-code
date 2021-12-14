@@ -11,45 +11,33 @@ module Aoc2021
 
       def alternative_count_polymer_difference(template, steps)
         @starting = template.chars.first
-        dups = {}
         template_occurs = Hash.new(0)
 
         template.chars.each_cons(2).each { |pair| template_occurs[pair.join] += 1 }
-        steps.times { |i| template_occurs, dups = alternative_step(template_occurs)}
+        steps.times { |i| template_occurs = alternative_step(template_occurs)}
 
-        counts = count_occurs(template_occurs, dups).values
-        counts.max - counts.min
+        count_occurs(template_occurs).minmax_by { |_char, occ| occ }.map(&:last).reduce(&:-).abs
       end
 
-      def count_occurs(template_occurs, dups)
-        counts = Hash.new(0)
-        template_occurs.each do |sub, occ|
-          sub.chars.each do |s|
-            counts[s] += occ
-          end
-        end
-        dups[@starting] -= 1
-        dups.each { |k, v| counts[k] -= v }
-        counts
+      def count_occurs(template_occurs)
+        res = template_occurs.map { |k, v| [k.last, v] }.group_by(&:first).transform_values { |v| v.sum(&:last) }
+        res[@starting] += 1
+        res
       end
 
       def alternative_step(template_occurs)
         res = Hash.new(0)
-        dups = Hash.new(0)
         template_occurs.each do |key, val|
           res[key.first + @rules[key]] += val
           res[@rules[key] + key.last] += val
-          dups[key.first] += val
-          dups[@rules[key]] += val
         end
-        [res, dups]
+        res
       end
 
       def count_polymer_difference(template, steps)
-        template = template
         steps.times { template = step(template)}
-        counts = template.chars.tally.values
-        counts.max - counts.min
+
+        template.chars.tally.values.minmax.reduce(&:-).abs
       end
 
       def step(template)
