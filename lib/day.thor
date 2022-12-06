@@ -3,7 +3,7 @@ require_relative './day_input_fetcher'
 class Day < Thor
   include Thor::Actions
 
-  CURRENT_YEAR = '2021'
+  CURRENT_YEAR = '2022'
 
   desc 'setup day_number', 'Creates directory structure and downloads input file from AoC website.'
   method_option :year, aliases: '-y', desc: "Specify puzzle year. Default: #{CURRENT_YEAR}", default: CURRENT_YEAR
