@@ -22,7 +22,11 @@ module Aoc
     end
 
     def parse_input(input_filename)
-      File.readlines(input_filename).each_with_index { |line, index| yield(line.strip!, index) }
+      if @raw_input
+        File.readlines(input_filename).each_with_index { |line, index| yield(line, index) }
+      else
+        File.readlines(input_filename).each_with_index { |line, index| yield(line.strip!, index) }
+      end
     end
 
     def handle_input_line(line, _index)
