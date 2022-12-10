@@ -15,6 +15,8 @@ module Aoc
   end
 
   class PuzzleBase
+    attr_accessor :input_filename
+
     def self.call(input_filename:)
       puzzle = new
       puzzle.parse_input(input_filename) { |line, index| puzzle.handle_input_line(line, index) }
@@ -22,6 +24,10 @@ module Aoc
     end
 
     def parse_input(input_filename)
+      if self.class.input_handler.present?
+        @input = self.class.input_handler.parse(input_filename)
+      end
+
       if @raw_input
         File.readlines(input_filename).each_with_index { |line, index| yield(line, index) }
       else
