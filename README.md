@@ -33,7 +33,7 @@ thor puzzle:solve <day_number> -u # Runs test cases from the method unit_tets
 ```
 
 ## Results
-### 2022 - 18 :star:
+### 2022 - 20 :star:
 
 |  | Part One | Part Two |
 | --- | :---: | :---: |
@@ -47,7 +47,7 @@ thor puzzle:solve <day_number> -u # Runs test cases from the method unit_tets
 | Day 8 | :star: | :star: |
 | Day 9 | | |
 | Day 10 | :star: | :star: |
-| Day 11 | | |
+| Day 11 | :star: | :star: |
 | Day 12 | | |
 | Day 13 | | |
 | Day 14 | | |
