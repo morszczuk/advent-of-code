@@ -17,11 +17,12 @@ GEM
     thor (1.1.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
-    uri (0.11.0)
+    uri (0.11.1)
     zeitwerk (2.5.1)
 
 PLATFORMS
   arm64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   activesupport (~> 6.1.4.1)
