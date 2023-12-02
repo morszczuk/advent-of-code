@@ -24,7 +24,7 @@ module Aoc
     end
 
     def parse_input(input_filename)
-      if self.class.input_handler.present?
+      if self.class.instance_methods(false).include?(:input_handler?) && self.class.input_handler.present?
         @input = self.class.input_handler.parse(input_filename)
       end
 
